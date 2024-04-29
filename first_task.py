@@ -262,32 +262,35 @@ def main():
         "Welcome to the assistant bot! To view all available commands type 'show-command'"
     )
     while True:
-        user_input = input("Enter a command: ")
-        command, *args = parse_input(user_input)
-
-        if command in ["close", "exit"]:
-            save_data(book)
-            print("Good bye!")
-            break
-        elif command == "show-command":
-            print(show_command())
-        elif command == "hello":
-            print("How can I help you?")
-        elif command == "add":
-            print(add_contact(args, book))
-        elif command == "change":
-            print(change_contact(args, book))
-        elif command == "phone":
-            print(show_phones(args, book))
-        elif command == "all":
-            print(f"All contacts: {book}")
-        elif command == "add-birthday":
-            print(add_birthday(args, book))
-        elif command == "show-birthday":
-            print(show_birthday(args, book))
-        elif command == "birthdays":
-            print(birthdays(book))
-        else:
+        try:
+            user_input = input("Enter a command: ")
+            command, *args = parse_input(user_input)
+        
+            if command in ["close", "exit"]:
+                save_data(book)
+                print("Good bye!")
+                break
+            elif command == "show-command":
+                print(show_command())
+            elif command == "hello":
+                print("How can I help you?")
+            elif command == "add":
+                print(add_contact(args, book))
+            elif command == "change":
+                print(change_contact(args, book))
+            elif command == "phone":
+                print(show_phones(args, book))
+            elif command == "all":
+                print(f"All contacts: {book}")
+            elif command == "add-birthday":
+                print(add_birthday(args, book))
+            elif command == "show-birthday":
+                print(show_birthday(args, book))
+            elif command == "birthdays":
+                print(birthdays(book))
+            else:
+                print("Invalid command.")
+        except ValueError:
             print("Invalid command.")
 
 
